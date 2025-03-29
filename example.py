@@ -28,7 +28,7 @@ async def main():
         
         # Navigate to a URL
         print("Navigating to example.com...")
-        await browser.goto("https://example.com")
+        await browser.goto("https://google.com")
         print("Navigated to example.com")
         
         # Extract all links and take a screenshot with boxes around them

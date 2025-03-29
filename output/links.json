@@ -1,15 +1,262 @@
 [
   {
     "index": 0,
-    "href": "https://www.iana.org/domains/example",
-    "text": "More information...",
+    "href": "https://about.google/?fg=1&utm_source=google-IN&utm_medium=referral&utm_campaign=hp-header",
+    "text": "About",
     "title": "",
     "visible": true,
     "boundingBox": {
-      "x": 340,
-      "y": 257.875,
-      "width": 145.75,
-      "height": 22
+      "x": 21,
+      "y": 17,
+      "width": 46.59375,
+      "height": 26
+    }
+  },
+  {
+    "index": 1,
+    "href": "https://store.google.com/IN?utm_source=hp_header&utm_medium=google_ooo&utm_campaign=GS100042&hl=en-IN",
+    "text": "Store",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 77.59375,
+      "y": 17,
+      "width": 43.46875,
+      "height": 26
+    }
+  },
+  {
+    "index": 2,
+    "href": "https://mail.google.com/mail/&ogbl",
+    "text": "Gmail",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 1008.40625,
+      "y": 18,
+      "width": 33.953125,
+      "height": 24
+    }
+  },
+  {
+    "index": 3,
+    "href": "https://www.google.com/imghp?hl=en&ogbl",
+    "text": "Images",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 1057.359375,
+      "y": 18,
+      "width": 42.640625,
+      "height": 24
+    }
+  },
+  {
+    "index": 4,
+    "href": "https://www.google.co.in/intl/en/about/products",
+    "text": "",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 1115,
+      "y": 10.5625,
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "index": 5,
+    "href": "https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/&ec=GAZAmgQ",
+    "text": "Sign in",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 1169,
+      "y": 10,
+      "width": 85,
+      "height": 40
+    }
+  },
+  {
+    "index": 6,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=hi&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCBg",
+    "text": "\u0939\u093f\u0928\u094d\u0926\u0940",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 498.140625,
+      "y": 386,
+      "width": 30.5625,
+      "height": 15
+    }
+  },
+  {
+    "index": 7,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=bn&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCBk",
+    "text": "\u09ac\u09be\u0982\u09b2\u09be",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 532.328125,
+      "y": 386,
+      "width": 35.875,
+      "height": 15
+    }
+  },
+  {
+    "index": 8,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=te&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCBo",
+    "text": "\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 571.828125,
+      "y": 386,
+      "width": 41.90625,
+      "height": 15
+    }
+  },
+  {
+    "index": 9,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=mr&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCBs",
+    "text": "\u092e\u0930\u093e\u0920\u0940",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 617.359375,
+      "y": 386,
+      "width": 33.390625,
+      "height": 15
+    }
+  },
+  {
+    "index": 10,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=ta&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCBw",
+    "text": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 654.375,
+      "y": 386,
+      "width": 42.453125,
+      "height": 15
+    }
+  },
+  {
+    "index": 11,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=gu&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCB0",
+    "text": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 700.453125,
+      "y": 386,
+      "width": 45.3125,
+      "height": 15
+    }
+  },
+  {
+    "index": 12,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=kn&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCB4",
+    "text": "\u0c95\u0ca8\u0ccd\u0ca8\u0ca1",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 749.390625,
+      "y": 386,
+      "width": 34.0625,
+      "height": 15
+    }
+  },
+  {
+    "index": 13,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=ml&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCB8",
+    "text": "\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 787.078125,
+      "y": 386,
+      "width": 61.875,
+      "height": 15
+    }
+  },
+  {
+    "index": 14,
+    "href": "https://www.google.com/setprefs?sig=0_lJnuogrTFRe7NLIYn0HWczGonMY%3D&hl=pa&source=homepage&sa=X&ved=0ahUKEwiLgs-Y6a-MAxVo9DgGHQ48CmQQ2ZgBCCA",
+    "text": "\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 852.578125,
+      "y": 386,
+      "width": 36,
+      "height": 15
+    }
+  },
+  {
+    "index": 15,
+    "href": "https://www.google.com/intl/en_in/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1",
+    "text": "Advertising",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 20,
+      "y": 674,
+      "width": 99.265625,
+      "height": 46
+    }
+  },
+  {
+    "index": 16,
+    "href": "https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1",
+    "text": "Business",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 119.265625,
+      "y": 674,
+      "width": 86.8125,
+      "height": 46
+    }
+  },
+  {
+    "index": 17,
+    "href": "https://google.com/search/howsearchworks/?fg=1",
+    "text": "How Search works",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 206.078125,
+      "y": 674,
+      "width": 146.703125,
+      "height": 46
+    }
+  },
+  {
+    "index": 18,
+    "href": "https://policies.google.com/privacy?hl=en-IN&fg=1",
+    "text": "Privacy",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 1035.375,
+      "y": 674,
+      "width": 75.90625,
+      "height": 46
+    }
+  },
+  {
+    "index": 19,
+    "href": "https://policies.google.com/terms?hl=en-IN&fg=1",
+    "text": "Terms",
+    "title": "",
+    "visible": true,
+    "boundingBox": {
+      "x": 1111.28125,
+      "y": 674,
+      "width": 68.125,
+      "height": 46
     }
   }
 ]
