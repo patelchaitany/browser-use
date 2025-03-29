@@ -1,0 +1,16 @@
+[
+  {
+    "tagName": "a",
+    "text": "More information...",
+    "attributes": {
+      "href": "https://www.iana.org/domains/example"
+    },
+    "boundingBox": {
+      "x": 340,
+      "y": 257.875,
+      "width": 145.75,
+      "height": 22
+    },
+    "href": "https://www.iana.org/domains/example"
+  }
+]

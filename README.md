@@ -1,140 +1,132 @@
 # Browser Use API for Python
 
-A Python library for browser interaction and extraction of web page content. This library provides a simple API for automating web browser tasks, extracting structured information, and interacting with web pages.
+A Python API for browser interaction and data extraction. This API allows you to:
 
-## Features
-
-### Extraction
-- Extract all links from a web page
-- Take screenshots with highlighted boxes around links
-- Extract structured content (headings, paragraphs, links, images)
-
-### Interaction
-- Navigate to URLs
-- Click elements (by identifier or by position)
-- Type text into elements
-- Scroll the page
-- Wait for elements to appear on the page
-- Highlight elements on the page for better visibility
-- Dynamic element finding by scanning the entire page
+- Extract useful links and interactive elements from web pages
+- Take screenshots with bounding boxes around links and elements
+- Interact with the browser (clicking, scrolling, typing)
+- Extract data in a structured manner
 
 ## Installation
 
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/browser-use.git
+cd browser-use
+```
+
+2. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage Examples
+## Usage
 
-### Basic Browser Initialization
+### Basic Example
 
 ```python
+import asyncio
 from browser_use import BrowserUse
 
-# Initialize a browser (Chrome by default)
-browser = BrowserUse(headless=False)
+async def main():
+    # Initialize the browser (headless mode)
+    async with BrowserUse(headless=True) as browser:
+        # Navigate to a URL
+        await browser.goto("https://example.com")
+        
+        # Extract all links and take a screenshot with boxes around them
+        links = await browser.extract_links(draw_boxes=True)
+        await browser.take_screenshot("example_links.png")
+        
+        # Print the extracted links
+        for link in links:
+            print(f"Link: {link['text']} -> {link['href']}")
+            
+        # Extract interactive elements
+        elements = await browser.extract_interactive_elements(draw_boxes=True)
+        await browser.take_screenshot("example_elements.png")
+        
+        # Click a button on the page
+        await browser.click_element(element_name="Submit")
+        
+        # Type text into an input field
+        await browser.type_text("Hello, world!", selector="input[name='search']")
+        
+        # Extract structured data from the page
+        data = await browser.extraction_service.extract_structured_data()
+        print(f"Page title: {data['title']}")
 
-# Navigate to a URL
-browser.navigate("https://www.example.com")
-
-# Close the browser when done
-browser.close()
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
 
-### Extracting Links and Taking Screenshots
+### Extraction Examples
+
+#### Extract Links
 
 ```python
-# Extract all links from the current page
-links = browser.extract_links()
-for link in links:
-    print(f"Text: {link['text']}, URL: {link['href']}")
+# Extract all links from the page
+links = await browser.extract_links()
 
-# Take a screenshot with boxes around links
-screenshot_path = "example_screenshot.png"
-browser.screenshot_with_link_boxes(screenshot_path)
-print(f"Screenshot saved to {screenshot_path}")
-
-# Extract structured content
-content = browser.extract_page_content()
-print(f"Page title: {content['title']}")
-print(f"Number of headings: {len(content['headings'])}")
-print(f"Number of paragraphs: {len(content['paragraphs'])}")
+# Extract links and highlight them on the page
+links = await browser.extract_links(draw_boxes=True)
 ```
 
-### Interacting with the Page
+#### Extract Interactive Elements
 
 ```python
-# Click an element by CSS selector (with highlighting)
-browser.click_element("#submit-button", highlight=True)
+# Extract all interactive elements from the page
+elements = await browser.extract_interactive_elements()
 
-# Click an element by visible text
-browser.click_element("Sign In", by=None, highlight=True)  # Uses text search
+# Extract and highlight interactive elements
+elements = await browser.extract_interactive_elements(draw_boxes=True)
+```
+
+#### Take Screenshots
+
+```python
+# Take a screenshot of the current page
+await browser.take_screenshot("screenshot.png")
+
+# Take a screenshot with bounding boxes around elements
+await browser.take_screenshot("screenshot_with_boxes.png", draw_boxes=True)
+```
+
+### Interaction Examples
+
+#### Click Elements
+
+```python
+# Click by selector
+await browser.click_element(selector="#submit-button")
+
+# Click by element name/text
+await browser.click_element(element_name="Submit")
 
 # Click at specific coordinates
-browser.click_element(position=(100, 200))
-
-# Type text into an input field with element highlighting
-browser.type_text("Hello, world!", "#search-box", highlight=True)
-
-# Scroll the page
-browser.scroll(direction="down", amount=500)
-browser.scroll(direction="bottom")  # Scroll to the bottom of the page
-
-# Wait for an element to appear
-element = browser.wait_for_element("#loading-complete", timeout=15)
+await browser.click_element(position=(100, 200))
 ```
 
-### Finding and Highlighting Elements
+#### Scroll
 
 ```python
-# Find and highlight an element by CSS selector
-element = browser.find_and_highlight("#main-heading", duration=3)
+# Scroll down
+await browser.scroll(direction="down")
 
-# Find and highlight an element by text
-element = browser.find_and_highlight("Sign In", by=None, duration=2)
-
-# Highlight an existing WebElement
-element = browser.wait_for_element("#loading-complete")
-browser.highlight_element(element, color="green", border_width=5, duration=3)
+# Scroll up with specific distance
+await browser.scroll(direction="up", distance=500)
 ```
 
-### Dynamic Element Finding
+#### Type Text
 
 ```python
-# Scan the page for all interactive elements (with highlighting)
-elements = browser.scan_interactive_elements(highlight=True)
-print(f"Found {len(elements)} interactive elements")
+# Type into a specific input field
+await browser.type_text("Hello, world!", selector="input[name='search']")
 
-# Find elements by their content (text or attributes)
-element = browser.find_element_by_content("Add to Cart", highlight=True)
-
-# Find elements by content with type filtering
-button = browser.find_element_by_content("Submit", element_type="button")
-
-# Clear all highlights from the page
-browser.clear_highlights()
+# Type into the currently focused element
+await browser.type_text("Hello, world!")
 ```
 
-### Error Handling
+## License
 
-```python
-from browser_use.utils.exceptions import ElementNotFoundException, BrowserOperationError
-
-try:
-    browser.click_element("Non-existent element")
-except ElementNotFoundException as e:
-    print(f"Element not found: {e}")
-except BrowserOperationError as e:
-    print(f"Browser operation failed: {e}")
-```
-
-## Requirements
-
-- Python 3.7 or later
-- Chrome browser and appropriate ChromeDriver (automatically managed)
-
-## Dependencies
-
-- selenium
-- webdriver-manager
-- Pillow (PIL) 
+This project is licensed under the MIT License - see the LICENSE file for details. 

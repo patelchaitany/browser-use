@@ -1,18 +1,7 @@
-from browser_use.utils.exceptions import (
-    BrowserUseException,
-    ElementNotFoundException,
-    BrowserOperationError
-)
+"""
+Utilities for the browser_use package.
+"""
 
-from browser_use.utils.element_finder import (
-    find_element_by_text,
-    get_clickable_elements
-)
+from browser_use.utils.logger import setup_logger
 
-__all__ = [
-    'BrowserUseException',
-    'ElementNotFoundException',
-    'BrowserOperationError',
-    'find_element_by_text',
-    'get_clickable_elements'
-] 
+__all__ = ["setup_logger"]
