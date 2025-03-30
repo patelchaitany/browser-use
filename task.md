@@ -8,3 +8,5 @@
     # Draw Bounding Box around found elemnt's
 
     # For extrecting interective and use ful element from website use this github implementation - "https://github.com/browser-use/browser-use/blob/main/browser_use/dom/buildDomTree.js"
+
+    # Press enter 

@@ -1,7 +1,3 @@
-playwright
-asyncio
-pytest
-pytest-asyncio
-pillow
-google-generativeai
-python-dotenv
+playwright==1.40.0
+litellm==1.10.2
+python-dotenv==1.0.0 

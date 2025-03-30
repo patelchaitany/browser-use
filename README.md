@@ -1,17 +1,18 @@
-# Browser Use API for Python
+# Browser Use - DOM-based Interactive Element Extractor
 
-A Python API for browser interaction and data extraction. This API allows you to:
+This Python library provides functionality to extract and highlight interactive elements in a web page using DOM-based analysis. It implements the following features:
 
-- Extract useful links and interactive elements from web pages
-- Take screenshots with bounding boxes around links and elements
-- Interact with the browser (clicking, scrolling, typing)
-- Extract data in a structured manner
+- Extract all interactive and clickable elements from a webpage
+- Highlight these elements with colored bounding boxes in the browser
+- Take screenshots with the highlighted elements
+- Interact with elements by clicking on them
+- Provide detailed information about each interactive element
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/browser-use.git
+git clone https://github.com/yourusername/browser-use.git
 cd browser-use
 ```
 
@@ -20,113 +21,125 @@ cd browser-use
 pip install -r requirements.txt
 ```
 
+3. Install Playwright browsers:
+```bash
+playwright install
+```
+
 ## Usage
 
-### Basic Example
+### Running the Demo
+
+To see the library in action, run the demo script:
+
+```bash
+python demo.py
+```
+
+This will:
+1. Open a browser window
+2. Navigate to example.com
+3. Extract and highlight all interactive elements
+4. Save a screenshot with the highlights
+5. Click on the first interactive element
+6. Save a screenshot after clicking
+
+### Using the Library in Your Code
+
+Here's a simple example of how to use the library in your own code:
 
 ```python
 import asyncio
-from browser_use import BrowserUse
+from playwright.async_api import async_playwright
+from browser_use.dom.service import DomService
 
-async def main():
-    # Initialize the browser (headless mode)
-    async with BrowserUse(headless=True) as browser:
-        # Navigate to a URL
-        await browser.goto("https://example.com")
+async def example():
+    async with async_playwright() as p:
+        # Launch browser
+        browser = await p.chromium.launch(headless=False)
+        page = await browser.new_page()
         
-        # Extract all links and take a screenshot with boxes around them
-        links = await browser.extract_links(draw_boxes=True)
-        await browser.take_screenshot("example_links.png")
+        # Navigate to a website
+        await page.goto("https://example.com")
+        await page.wait_for_load_state("networkidle")
         
-        # Print the extracted links
-        for link in links:
-            print(f"Link: {link['text']} -> {link['href']}")
+        # Initialize DOM service
+        dom_service = DomService(page)
+        
+        # Extract and highlight clickable elements
+        dom_state = await dom_service.get_clickable_elements()
+        
+        # Print information about each element
+        for idx, element in dom_state.selector_map.items():
+            print(f"Element {idx}: {element}")
             
-        # Extract interactive elements
-        elements = await browser.extract_interactive_elements(draw_boxes=True)
-        await browser.take_screenshot("example_elements.png")
+        # Take a screenshot with highlights
+        await dom_service.take_screenshot_with_highlights("screenshot.png")
         
-        # Click a button on the page
-        await browser.click_element(element_name="Submit")
+        # Click on an element by index
+        if 0 in dom_state.selector_map:
+            await dom_service.click_element(0)
         
-        # Type text into an input field
-        await browser.type_text("Hello, world!", selector="input[name='search']")
-        
-        # Extract structured data from the page
-        data = await browser.extraction_service.extract_structured_data()
-        print(f"Page title: {data['title']}")
+        # Close the browser
+        await browser.close()
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# Run the example
+asyncio.run(example())
 ```
 
-### Extraction Examples
+## Advanced Usage
 
-#### Extract Links
+### Getting Element Details
+
+You can get detailed information about each interactive element:
 
 ```python
-# Extract all links from the page
-links = await browser.extract_links()
+# Get the DOM state which contains all interactive elements
+dom_state = await dom_service.get_clickable_elements()
 
-# Extract links and highlight them on the page
-links = await browser.extract_links(draw_boxes=True)
+# Get a specific element by its highlight index
+element = dom_state.selector_map[0]
+
+# Get element properties
+tag_name = element.tag_name          # HTML tag (e.g., 'a', 'button')
+xpath = element.xpath                # XPath to the element
+attributes = element.attributes      # Dictionary of HTML attributes
+text = element.get_all_text_till_next_clickable_element()  # Text content
+is_interactive = element.is_interactive  # Whether it's interactive
+is_in_viewport = element.is_in_viewport  # Whether it's visible in viewport
 ```
 
-#### Extract Interactive Elements
+### Customizing Highlighting
+
+You can customize the element highlighting:
 
 ```python
-# Extract all interactive elements from the page
-elements = await browser.extract_interactive_elements()
-
-# Extract and highlight interactive elements
-elements = await browser.extract_interactive_elements(draw_boxes=True)
+# Highlight elements with specific focus on element index 2
+dom_state = await dom_service.get_clickable_elements(
+    highlight_elements=True,
+    focus_element=2,
+    viewport_expansion=100  # Expand the viewport detection area by 100px
+)
 ```
 
-#### Take Screenshots
+## How It Works
 
-```python
-# Take a screenshot of the current page
-await browser.take_screenshot("screenshot.png")
+The library uses a combination of JavaScript DOM analysis and Python processing:
 
-# Take a screenshot with bounding boxes around elements
-await browser.take_screenshot("screenshot_with_boxes.png", draw_boxes=True)
-```
+1. It injects JavaScript code (buildDomTree.js) into the page
+2. The JS code analyzes the DOM to find interactive elements
+3. It highlights these elements with colored overlays
+4. The data is returned to Python
+5. Python constructs a tree representation of the DOM
+6. You can then interact with this tree or with the highlighted elements
 
-### Interaction Examples
+The interactive element detection looks for:
+- Clickable elements (buttons, links, etc.)
+- Form controls (inputs, selects, etc.)
+- Elements with click handlers
+- Elements with appropriate CSS properties (cursor: pointer)
+- Elements that are visually apparent and accessible
 
-#### Click Elements
+## Contributing
 
-```python
-# Click by selector
-await browser.click_element(selector="#submit-button")
-
-# Click by element name/text
-await browser.click_element(element_name="Submit")
-
-# Click at specific coordinates
-await browser.click_element(position=(100, 200))
-```
-
-#### Scroll
-
-```python
-# Scroll down
-await browser.scroll(direction="down")
-
-# Scroll up with specific distance
-await browser.scroll(direction="up", distance=500)
-```
-
-#### Type Text
-
-```python
-# Type into a specific input field
-await browser.type_text("Hello, world!", selector="input[name='search']")
-
-# Type into the currently focused element
-await browser.type_text("Hello, world!")
-```
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
+Contributions are welcome! Please feel free to submit a Pull Request. 
