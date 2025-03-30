@@ -71,6 +71,74 @@ async def run_ai_task():
         await automation.stop()
 ```
 
+## Proxy Configuration
+
+### Using Proxy with Command-Line Interface
+
+```bash
+# Basic proxy configuration with host and port
+python ai_driven_browser_demo.py --task "Search for local businesses in Japan" --proxy-host "192.168.1.1" --proxy-port "8080"
+
+# Using a proxy for geo-restricted content
+python ai_driven_browser_demo.py --task "Access streaming service content available in UK" --proxy-host "uk-proxy.example.com" --proxy-port "3128"
+
+# For SOCKS proxy (handled by the browser internally)
+python ai_driven_browser_demo.py --task "Scrape data from a website with rate limiting" --proxy-host "socks5://proxy.example.com" --proxy-port "1080"
+```
+
+### Using Proxy with Python API
+
+```python
+from browser_use import NativeBrowserAutomation, BrowserType, AIController
+
+async def run_with_proxy():
+    # Configure proxy
+    proxy_config = {
+        "host": "192.168.1.100",
+        "port": "8080"
+        # You can also add username and password if needed:
+        # "username": "proxyuser",
+        # "password": "proxypassword"
+    }
+    
+    # Create browser automation with proxy
+    automation = NativeBrowserAutomation(
+        browser_type=BrowserType.CHROME,
+        headless=False,
+        proxy_config=proxy_config
+    )
+    
+    await automation.start()
+    try:
+        # Navigate to a location-sensitive website
+        await automation.navigate_to("https://example.com")
+        
+        # Create AI controller
+        ai_controller = AIController(
+            automation=automation,
+            api_key="your-api-key",
+            model_name="gpt-4o"
+        )
+        
+        # Run task that may require different geolocation
+        result = await ai_controller.run_task(
+            task_description="Check prices for products available in a different region",
+            max_actions=15
+        )
+        
+        print(result)
+    finally:
+        await automation.stop()
+```
+
+### Common Proxy Use Cases
+
+- **Geo-restriction Bypass**: Access content only available in specific countries
+- **Web Scraping**: Distribute requests across multiple IPs to avoid rate limiting
+- **Privacy**: Hide your real IP address during automated browsing
+- **Testing**: Verify how your website appears from different locations
+- **Corporate Networks**: Route traffic through required corporate proxies
+
 ## Example Tasks
 
 The AI can perform a wide variety of tasks, such as:
