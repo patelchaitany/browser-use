@@ -1,0 +1,60 @@
+[
+  {
+    "domain": "en.wikipedia.org",
+    "httpOnly": false,
+    "name": "enwikimwuser-sessionId",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "d7156cacbf66b6d7427e"
+  },
+  {
+    "domain": "en.wikipedia.org",
+    "expiry": 1743349127,
+    "httpOnly": false,
+    "name": "NetworkProbeLimit",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "0.001"
+  },
+  {
+    "domain": "en.wikipedia.org",
+    "expiry": 1743380725,
+    "httpOnly": true,
+    "name": "WMF-DP",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "79d"
+  },
+  {
+    "domain": "en.wikipedia.org",
+    "expiry": 1746100800,
+    "httpOnly": true,
+    "name": "WMF-Last-Access",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "30-Mar-2025"
+  },
+  {
+    "domain": ".wikipedia.org",
+    "httpOnly": false,
+    "name": "GeoIP",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "IN:GJ:Himatnagar:23.60:72.97:v4"
+  },
+  {
+    "domain": ".wikipedia.org",
+    "expiry": 1746123126,
+    "httpOnly": true,
+    "name": "WMF-Last-Access-Global",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "30-Mar-2025"
+  }
+]

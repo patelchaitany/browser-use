@@ -1,0 +1,381 @@
+{
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "name": "Python (programming language)",
+      "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+      "sameAs": "http://www.wikidata.org/entity/Q28865",
+      "mainEntity": "http://www.wikidata.org/entity/Q28865",
+      "author": {
+        "@type": "Organization",
+        "name": "Contributors to Wikimedia projects"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Wikimedia Foundation, Inc.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.wikimedia.org/static/images/wmf-hor-googpub.png"
+        }
+      },
+      "datePublished": "2001-10-29T18:24:39Z",
+      "dateModified": "2025-03-29T20:39:25Z",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+      "headline": "general-purpose programming language"
+    }
+  ],
+  "microdata": [],
+  "tables": [
+    {
+      "table_index": 0,
+      "data": [
+        {
+          "Paradigm": ""
+        },
+        {
+          "Paradigm": "Multi-paradigm:object-oriented,[1]procedural(imperative),functional,structured,reflective"
+        },
+        {
+          "Paradigm": "Guido van Rossum"
+        },
+        {
+          "Paradigm": "Python Software Foundation"
+        },
+        {
+          "Paradigm": "20\u00a0February 1991; 34 years ago(1991-02-20)[2]"
+        },
+        {
+          "Paradigm": ""
+        },
+        {
+          "Paradigm": "3.13.2\n   / 4 February 2025; 53 days ago(4 February 2025)"
+        },
+        {
+          "Paradigm": ""
+        },
+        {
+          "Paradigm": "duck,dynamic,strong;[3]optional type annotations(since 3.5, but those hints are ignored, except with unofficial tools)[4]"
+        },
+        {
+          "Paradigm": "Tier 1: 64-bitLinux,macOS; 64- and 32-bitWindows10+[5]Tier 2: E.g. 32-bitWebAssembly(WASI)Tier 3: 64-bitAndroid,[6]iOS,FreeBSD, and (32-bit)Raspberry Pi OSUnofficial (or has been known to work): OtherUnix-like/BSDvariants) and a few other platforms[7][8][9]"
+        },
+        {
+          "Paradigm": "Python Software Foundation License"
+        },
+        {
+          "Paradigm": ".py, .pyw, .pyz,[10].pyi, .pyc, .pyd"
+        },
+        {
+          "Paradigm": "python.org"
+        },
+        {
+          "Paradigm": "CPython,PyPy,Stackless Python,MicroPython,CircuitPython,IronPython,Jython"
+        },
+        {
+          "Paradigm": "Cython,RPython,Starlark[11]"
+        },
+        {
+          "Paradigm": "ABC,[12]Ada,[13]ALGOL 68,[14]APL,[15]C,[16]C++,[17]CLU,[18]Dylan,[19]Haskell,[20][15]Icon,[21]Lisp,[22]Modula-3,[14][17]Perl,[23]Standard ML[15]"
+        },
+        {
+          "Paradigm": "Apache Groovy,Boo,Cobra,CoffeeScript,[24]D,F#,GDScript,Go,JavaScript,[25][26]Julia,[27]Mojo,[28]Nim,Ring,[29]Ruby,[30]Swift,[31]V[32]"
+        },
+        {
+          "Paradigm": "Python Programmingat Wikibooks"
+        }
+      ]
+    },
+    {
+      "table_index": 1,
+      "data": [
+        {
+          "Type": "bool",
+          "Mutability": "immutable",
+          "Description": "Boolean value",
+          "Syntax examples": "TrueFalse"
+        },
+        {
+          "Type": "bytearray",
+          "Mutability": "mutable",
+          "Description": "Sequence ofbytes",
+          "Syntax examples": "bytearray(b'Some ASCII')bytearray(b\"Some ASCII\")bytearray([119,105,107,105])"
+        },
+        {
+          "Type": "bytes",
+          "Mutability": "immutable",
+          "Description": "Sequence of bytes",
+          "Syntax examples": "b'Some ASCII'b\"Some ASCII\"bytes([119,105,107,105])"
+        },
+        {
+          "Type": "complex",
+          "Mutability": "immutable",
+          "Description": "Complex numberwith real and imaginary parts",
+          "Syntax examples": "3+2.7j3+2.7j"
+        },
+        {
+          "Type": "dict",
+          "Mutability": "mutable",
+          "Description": "Associative array(or dictionary) of key and value pairs; can contain mixed types (keys and values), keys must be a hashable type",
+          "Syntax examples": "{'key1':1.0,3:False}{}"
+        },
+        {
+          "Type": "types.EllipsisType",
+          "Mutability": "immutable",
+          "Description": "Anellipsisplaceholder to be used as an index inNumPyarrays",
+          "Syntax examples": "...Ellipsis"
+        },
+        {
+          "Type": "float",
+          "Mutability": "immutable",
+          "Description": "Double-precisionfloating-point number. The precision is machine-dependent but in practice is generally implemented as a 64-bitIEEE\u00a0754number with 53\u00a0bits of precision.[118]",
+          "Syntax examples": "1.33333"
+        },
+        {
+          "Type": "frozenset",
+          "Mutability": "immutable",
+          "Description": "Unorderedset, contains no duplicates; can contain mixed types, if hashable",
+          "Syntax examples": "frozenset([4.0,'string',True])"
+        },
+        {
+          "Type": "int",
+          "Mutability": "immutable",
+          "Description": "Integerof unlimited magnitude[119]",
+          "Syntax examples": "42"
+        },
+        {
+          "Type": "list",
+          "Mutability": "mutable",
+          "Description": "List, can contain mixed types",
+          "Syntax examples": "[4.0,'string',True][]"
+        },
+        {
+          "Type": "types.NoneType",
+          "Mutability": "immutable",
+          "Description": "An object representing the absence of a value, often callednullin other languages",
+          "Syntax examples": "None"
+        },
+        {
+          "Type": "types.NotImplementedType",
+          "Mutability": "immutable",
+          "Description": "A placeholder that can be returned fromoverloaded operatorsto indicate unsupported operand types.",
+          "Syntax examples": "NotImplemented"
+        },
+        {
+          "Type": "range",
+          "Mutability": "immutable",
+          "Description": "Animmutable sequenceof numbers commonly used for looping a specific number of times inforloops[120]",
+          "Syntax examples": "range(\u22121,10)range(10,\u22125,\u22122)"
+        },
+        {
+          "Type": "set",
+          "Mutability": "mutable",
+          "Description": "Unorderedset, contains no duplicates; can contain mixed types, if hashable",
+          "Syntax examples": "{4.0,'string',True}set()"
+        },
+        {
+          "Type": "str",
+          "Mutability": "immutable",
+          "Description": "Acharacter string: sequence of Unicode codepoints",
+          "Syntax examples": "'Wikipedia'\"Wikipedia\"\"\"\"Spanningmultiplelines\"\"\"Spanningmultiplelines"
+        },
+        {
+          "Type": "tuple",
+          "Mutability": "immutable",
+          "Description": "Can contain mixed types",
+          "Syntax examples": "(4.0,'string',True)('single element',)()"
+        }
+      ]
+    },
+    {
+      "table_index": 2,
+      "data": [
+        {
+          "hidevtePython": "CircuitPythonCLPythonCPythonCythonMicroPythonNumbaIronPythonJythonPsycoPyPyPython for S60Shed SkinStackless PythonUnladen Swallowmore...",
+          "Implementations": ""
+        },
+        {
+          "hidevtePython": "ericIDLENinja-IDEPyCharmPyDevSpydermore..."
+        },
+        {
+          "hidevtePython": "WSGIASGI"
+        },
+        {
+          "hidevtePython": "Guido van Rossum"
+        },
+        {
+          "hidevtePython": "Software(list)Python Software FoundationPython Conference(PyCon)"
+        }
+      ]
+    },
+    {
+      "table_index": 3,
+      "data": [
+        {
+          "hidevteProgramming languages": "ComparisonTimelineHistory"
+        },
+        {
+          "hidevteProgramming languages": "AdaALGOLSimulaAPLAssemblyBASICVisual Basicclassic.NETCC++C#COBOLErlangElixirForthFortranGoHaskellJavaJavaScriptTypeScriptJuliaKotlinLispLuaMATLABMLCamlOCamlPascalObject PascalPerlRakuPHPPrologPythonRRubyRustSQLScratchShellSmalltalkSwiftmore..."
+        },
+        {
+          "hidevteProgramming languages": "Lists:AlphabeticalCategoricalGenerationalNon-English-basedCategory"
+        }
+      ]
+    },
+    {
+      "table_index": 4,
+      "data": [
+        {
+          "showvtePythonweb frameworks": "CherryPyCubicWebDjangoFastAPIFlaskGrokNevowPylonsPyramidQuixoteTornadoTurboGearsTwistedWebweb2pyZope 2more..."
+        },
+        {
+          "showvtePythonweb frameworks": "Comparison"
+        }
+      ]
+    },
+    {
+      "table_index": 5,
+      "data": [
+        {
+          "showvteDifferentiable computing": "Differentiable programmingInformation geometryStatistical manifoldAutomatic differentiationNeuromorphic computingPattern recognitionRicci calculusComputational learning theoryInductive bias"
+        },
+        {
+          "showvteDifferentiable computing": "IPUTPUVPUMemristorSpiNNaker"
+        },
+        {
+          "showvteDifferentiable computing": "TensorFlowPyTorchKerasscikit-learnTheanoJAXFlux.jlMindSpore"
+        },
+        {
+          "showvteDifferentiable computing": "PortalsComputer programmingTechnology"
+        }
+      ]
+    },
+    {
+      "table_index": 6,
+      "data": [
+        {
+          "showvteFree and open-source software": "Alternative terms for free softwareComparison of open-source and closed-source softwareComparison of source-code-hosting facilitiesFree softwareFree software project directoriesGratis versus libreLong-term supportOpen-source softwareOpen-source software developmentOutlineTimeline"
+        },
+        {
+          "showvteFree and open-source software": "AudioBioinformaticsCodecsConfiguration managementDriversGraphicsWirelessHealthMathematicsOffice suitesOperating systemsRoutingTelevisionVideo gamesWeb applicationsE-commerceAndroid appsiOS appsCommercialFormerly proprietaryFormerly open-source"
+        },
+        {
+          "showvteFree and open-source software": "Free software movementHistoryOpen-source-software movementEventsAdvocacy"
+        },
+        {
+          "showvteFree and open-source software": "Free Software Movement of IndiaFree Software Foundation"
+        },
+        {
+          "showvteFree and open-source software": "AFLApacheAPSLArtisticBeerwareBSDCreative CommonsCDDLEPLFree Software FoundationGNU GPLGNU AGPLGNU LGPLISCMITMPLPythonPython Software Foundation LicenseShared Source InitiativeSleepycatUnlicenseWTFPLzlibTypes andstandardsComparison of licensesContributor License AgreementCopyleftDebian Free Software GuidelinesDefinition of Free Cultural WorksFree licenseThe Free Software DefinitionThe Open Source DefinitionOpen-source licensePermissive software licensePublic domain",
+          "General": "Comparison of licensesContributor License AgreementCopyleftDebian Free Software GuidelinesDefinition of Free Cultural WorksFree licenseThe Free Software DefinitionThe Open Source DefinitionOpen-source licensePermissive software licensePublic domain"
+        },
+        {
+          "showvteFree and open-source software": "Comparison of licensesContributor License AgreementCopyleftDebian Free Software GuidelinesDefinition of Free Cultural WorksFree licenseThe Free Software DefinitionThe Open Source DefinitionOpen-source licensePermissive software licensePublic domain"
+        },
+        {
+          "showvteFree and open-source software": "Digital rights managementLicense proliferationMozilla software rebrandingProprietary device driversProprietary firmwareProprietary softwareSCO/Linux controversiesSoftware patentsSoftware securityTivoizationTrusted Computing"
+        },
+        {
+          "showvteFree and open-source software": "ForkingGNU ManifestoMicrosoft Open Specification PromiseOpen-core modelOpen-source hardwareShared Source InitiativeSource-available softwareThe Cathedral and the BazaarRevolution OS"
+        },
+        {
+          "showvteFree and open-source software": "PortalCategory"
+        }
+      ]
+    },
+    {
+      "table_index": 7,
+      "data": [
+        {
+          "Types andstandards": "Comparison of licensesContributor License AgreementCopyleftDebian Free Software GuidelinesDefinition of Free Cultural WorksFree licenseThe Free Software DefinitionThe Open Source DefinitionOpen-source licensePermissive software licensePublic domain"
+        }
+      ]
+    },
+    {
+      "table_index": 8,
+      "data": [
+        {
+          "showvteStatistical software": "DataplotEpi InfoCSProX-12-ARIMA"
+        },
+        {
+          "showvteStatistical software": "ADMBDAPgretljamoviJASPJAGSJMulTiJuliaJupyter(Julia,Python,R)GNU OctaveOpenBUGSOrangePSPPPython(statsmodels,PyMC3,IPython,IDLE)R(RStudio)SageMathSimFiTSOFA StatisticsStanXLispStat"
+        },
+        {
+          "showvteStatistical software": "BV4.1CumFreqSegRegXploReWinBUGS"
+        },
+        {
+          "showvteStatistical software": "Cross-platformData DeskGAUSSGraphPad InStatGraphPad PrismIBMSPSSStatisticsIBMSPSS ModelerJMPMapleMathcadMathematicaMATLABOxMetricsRATSRevolution AnalyticsSASSmartPLSStataStatViewSUDAANS-PLUSTSPWorld Programming System(WPS)WindowsonlyBMDPEViewsGenStatLIMDEPLISRELMedCalcMicrofitMinitabMLwiNNCSSShazamSigmaStatStatisticaStatsDirectStatXactSYSTATThe UnscramblerUnistatExceladd-onsAnalyse-itUnistat for ExcelXLfitRExcel",
+          "Public domain": "Data DeskGAUSSGraphPad InStatGraphPad PrismIBMSPSSStatisticsIBMSPSS ModelerJMPMapleMathcadMathematicaMATLABOxMetricsRATSRevolution AnalyticsSASSmartPLSStataStatViewSUDAANS-PLUSTSPWorld Programming System(WPS)",
+          "Open-source": "BMDPEViewsGenStatLIMDEPLISRELMedCalcMicrofitMinitabMLwiNNCSSShazamSigmaStatStatisticaStatsDirectStatXactSYSTATThe UnscramblerUnistat",
+          "Freeware": "Analyse-itUnistat for ExcelXLfitRExcel"
+        },
+        {
+          "showvteStatistical software": "Data DeskGAUSSGraphPad InStatGraphPad PrismIBMSPSSStatisticsIBMSPSS ModelerJMPMapleMathcadMathematicaMATLABOxMetricsRATSRevolution AnalyticsSASSmartPLSStataStatViewSUDAANS-PLUSTSPWorld Programming System(WPS)"
+        },
+        {
+          "showvteStatistical software": "BMDPEViewsGenStatLIMDEPLISRELMedCalcMicrofitMinitabMLwiNNCSSShazamSigmaStatStatisticaStatsDirectStatXactSYSTATThe UnscramblerUnistat"
+        },
+        {
+          "showvteStatistical software": "Analyse-itUnistat for ExcelXLfitRExcel"
+        },
+        {
+          "showvteStatistical software": "Comparison\u2022Category"
+        }
+      ]
+    },
+    {
+      "table_index": 9,
+      "data": [
+        {
+          "Cross-platform": "Data DeskGAUSSGraphPad InStatGraphPad PrismIBMSPSSStatisticsIBMSPSS ModelerJMPMapleMathcadMathematicaMATLABOxMetricsRATSRevolution AnalyticsSASSmartPLSStataStatViewSUDAANS-PLUSTSPWorld Programming System(WPS)"
+        },
+        {
+          "Cross-platform": "BMDPEViewsGenStatLIMDEPLISRELMedCalcMicrofitMinitabMLwiNNCSSShazamSigmaStatStatisticaStatsDirectStatXactSYSTATThe UnscramblerUnistat"
+        },
+        {
+          "Cross-platform": "Analyse-itUnistat for ExcelXLfitRExcel"
+        }
+      ]
+    },
+    {
+      "table_index": 10,
+      "data": [
+        {
+          "showvteNumerical-analysis software": "Advanced Simulation LibraryADMBChapelEuler Mathematical ToolboxFreeFem++FreeMatGeniusGmshGNU OctavegretlJuliaJupyter(Julia,Python,R;IPython)MFEMOpenFOAMPythonRSageMathSalomeScicosLabScilabX10WekaDiscontinuedFortress",
+          "Free": "Fortress"
+        },
+        {
+          "showvteNumerical-analysis software": "Fortress"
+        },
+        {
+          "showvteNumerical-analysis software": "DADiSPFEATool MultiphysicsGAUSSLabVIEWMapleMathcadMathematicaMATLABSpeakeasyVisSim"
+        },
+        {
+          "showvteNumerical-analysis software": "Comparison"
+        }
+      ]
+    },
+    {
+      "table_index": 11,
+      "data": [
+        {
+          "Discontinued": "Fortress"
+        }
+      ]
+    },
+    {
+      "table_index": 12,
+      "data": [
+        {
+          "showAuthority control databases": "FAST"
+        },
+        {
+          "showAuthority control databases": "GermanyUnited StatesFranceBnF dataCzech RepublicIsrael"
+        },
+        {
+          "showAuthority control databases": "IdRef"
+        }
+      ]
+    }
+  ]
+}
