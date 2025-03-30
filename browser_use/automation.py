@@ -11,6 +11,153 @@ from browser_use.ai.llm_controller import LLMController
 
 logger = logging.getLogger(__name__)
 
+class Browser:
+    """
+    Browser wrapper class that provides common browser operations.
+    """
+    
+    def __init__(self, page: Page):
+        """
+        Initialize the browser wrapper.
+        
+        Args:
+            page: The Playwright page object
+        """
+        self.page = page
+    
+    async def get_page(self) -> Page:
+        """
+        Get the current page object.
+        
+        Returns:
+            The Playwright page object
+        """
+        return self.page
+    
+    async def navigate(self, url: str) -> None:
+        """
+        Navigate to a URL.
+        
+        Args:
+            url: The URL to navigate to
+        """
+        logger.info(f"Navigating to {url}")
+        await self.page.goto(url)
+        await self.page.wait_for_load_state("networkidle")
+    
+    async def take_screenshot(self, path: str) -> str:
+        """
+        Take a screenshot of the current page.
+        
+        Args:
+            path: The path to save the screenshot to
+            
+        Returns:
+            The path to the saved screenshot
+        """
+        logger.info(f"Taking screenshot: {path}")
+        await self.page.screenshot(path=path)
+        return path
+    
+    async def get_page_content(self) -> str:
+        """
+        Get the text content of the current page.
+        
+        Returns:
+            The page text content
+        """
+        try:
+            content = await self.page.evaluate("""
+                () => {
+                    return document.body.innerText || document.body.textContent || '';
+                }
+            """)
+            return content
+        except Exception as e:
+            logger.warning(f"Error getting page content: {e}")
+            return ""
+    
+    async def get_current_url(self) -> str:
+        """
+        Get the current URL.
+        
+        Returns:
+            The current URL
+        """
+        return self.page.url
+    
+    async def get_page_title(self) -> str:
+        """
+        Get the current page title.
+        
+        Returns:
+            The page title
+        """
+        return await self.page.title()
+    
+    async def click(self, selector: str) -> bool:
+        """
+        Click on an element.
+        
+        Args:
+            selector: CSS selector or XPath to the element
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            if selector.startswith("//"):
+                # XPath
+                await self.page.click(f"xpath={selector}")
+            else:
+                # CSS selector
+                await self.page.click(selector)
+            return True
+        except Exception as e:
+            logger.warning(f"Error clicking element {selector}: {e}")
+            return False
+    
+    async def input_text(self, selector: str, text: str) -> bool:
+        """
+        Input text into an element.
+        
+        Args:
+            selector: CSS selector or XPath to the element
+            text: Text to input
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            if selector.startswith("//"):
+                # XPath
+                await self.page.fill(f"xpath={selector}", text)
+            else:
+                # CSS selector
+                await self.page.fill(selector, text)
+            return True
+        except Exception as e:
+            logger.warning(f"Error inputting text to {selector}: {e}")
+            return False
+    
+    async def scroll(self, x: int = 0, y: int = 0) -> bool:
+        """
+        Scroll the page.
+        
+        Args:
+            x: Horizontal scroll amount (positive is right, negative is left)
+            y: Vertical scroll amount (positive is down, negative is up)
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            await self.page.mouse.wheel(x=x, y=y)
+            return True
+        except Exception as e:
+            logger.warning(f"Error scrolling page: {e}")
+            return False
+
 class BrowserAutomation:
     """
     Browser automation class that can execute commands from AI models
@@ -49,8 +196,10 @@ class BrowserAutomation:
         self.output_dir.mkdir(exist_ok=True)
         
         # Initialize state variables
-        self.browser = None
+        self.playwright = None
+        self.browser_instance = None
         self.page = None
+        self.browser = None
         self.dom_service = None
         self.llm_controller = None
     
@@ -60,13 +209,16 @@ class BrowserAutomation:
         self.playwright = await async_playwright().start()
         
         # Launch browser
-        self.browser = await self.playwright.chromium.launch(headless=self.headless)
+        self.browser_instance = await self.playwright.chromium.launch(headless=self.headless)
         
         # Create a page with specified viewport
-        self.page = await self.browser.new_page(viewport={
+        self.page = await self.browser_instance.new_page(viewport={
             "width": self.viewport_width, 
             "height": self.viewport_height
         })
+        
+        # Initialize browser wrapper
+        self.browser = Browser(self.page)
         
         # Initialize DOM service
         self.dom_service = DomService(self.page)
@@ -82,10 +234,14 @@ class BrowserAutomation:
     
     async def stop(self) -> None:
         """Stop the browser and clean up resources."""
-        if self.browser:
-            await self.browser.close()
+        if self.browser_instance:
+            await self.browser_instance.close()
         if self.playwright:
             await self.playwright.stop()
+        
+        # Clean up
+        self.browser = None
+        self.page = None
         
         logger.info("Browser automation stopped")
     
@@ -96,12 +252,22 @@ class BrowserAutomation:
         Args:
             url: The URL to navigate to
         """
-        if not self.page:
+        if not self.browser:
             raise RuntimeError("Browser not started. Call start() first.")
         
-        logger.info(f"Navigating to {url}")
-        await self.page.goto(url)
-        await self.page.wait_for_load_state("networkidle")
+        await self.browser.navigate(url)
+    
+    async def get_browser(self) -> Browser:
+        """
+        Get the browser wrapper object.
+        
+        Returns:
+            The Browser object
+        """
+        if not self.browser:
+            raise RuntimeError("Browser not started. Call start() first.")
+        
+        return self.browser
     
     async def execute_ai_command(self, task_description: str) -> Dict[str, Any]:
         """

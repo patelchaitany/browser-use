@@ -7,6 +7,8 @@ This Python library provides functionality to extract and highlight interactive 
 - Take screenshots with the highlighted elements
 - Interact with elements by clicking on them
 - Provide detailed information about each interactive element
+- Execute complex browsing tasks with AI assistance
+- Break down tasks into logical steps and execute them automatically
 
 ## Installation
 
@@ -26,11 +28,15 @@ pip install -r requirements.txt
 playwright install
 ```
 
+4. Set up API keys (for AI-powered features):
+   - Copy `.env.example` to `.env` and fill in your API keys
+   - Or set environment variables manually (see AI Features section below)
+
 ## Usage
 
 ### Running the Demo
 
-To see the library in action, run the demo script:
+To see the basic DOM extraction in action, run the demo script:
 
 ```bash
 python demo.py
@@ -87,6 +93,87 @@ async def example():
 asyncio.run(example())
 ```
 
+## AI-Powered Features
+
+The library offers multiple AI-powered features for advanced browser automation.
+
+### LLM-Powered Browser Automation
+
+Execute browser actions using natural language commands:
+
+```python
+import asyncio
+from browser_use.browser_automation import BrowserAutomation
+
+async def example():
+    # Initialize with your API key
+    automation = BrowserAutomation(api_key="your-api-key")
+    
+    try:
+        # Start the browser
+        await automation.start()
+        
+        # Navigate to a URL
+        await automation.browser.navigate("https://example.com")
+        
+        # Execute a command using AI
+        result = await automation.execute_command(
+            "Find all links on this page and click on the one about products"
+        )
+        
+        print(f"Command executed: {result}")
+        
+    finally:
+        # Always close the browser
+        await automation.stop()
+
+asyncio.run(example())
+```
+
+For more details on LLM-powered automation, see [`README_LITELLM.md`](README_LITELLM.md).
+
+### Task Agent for Complex Web Tasks
+
+Execute complex web browsing tasks using natural language instructions:
+
+```python
+import asyncio
+from browser_use.agent.task_planner import TaskPlanner
+
+async def run_task():
+    # Create the task planner
+    planner = TaskPlanner(
+        api_key="your-api-key",
+        planning_model="gpt-4-turbo",
+        execution_model="gemini/gemini-2.5-pro-exp-03-25"
+    )
+    
+    try:
+        # Execute a complex task
+        history = await planner.execute_task(
+            "Research the latest iPhone model and compare prices from 3 different retailers"
+        )
+        
+        # Get the final result
+        final_result = history.all_results[-1] if history.all_results else None
+        if final_result and final_result.success and final_result.extracted_content:
+            print(f"Task completed. Results: {final_result.extracted_content}")
+        
+    finally:
+        # Always close the browser
+        await planner.stop()
+
+asyncio.run(run_task())
+```
+
+For quick testing, use the provided demo script:
+
+```bash
+python task_demo.py "Search for the latest news about AI"
+```
+
+For more details on the Task Agent, see [`README_TASK_AGENT.md`](README_TASK_AGENT.md).
+
 ## Advanced Usage
 
 ### Getting Element Details
@@ -139,6 +226,12 @@ The interactive element detection looks for:
 - Elements with click handlers
 - Elements with appropriate CSS properties (cursor: pointer)
 - Elements that are visually apparent and accessible
+
+For AI-powered features, the library uses:
+- Various LLM providers (OpenAI, Google Gemini, Anthropic Claude) via LiteLLM
+- Task planning and execution using sophisticated prompt engineering
+- Browser automation through Playwright
+- Screenshot-based visual understanding for complex web pages
 
 ## Contributing
 
